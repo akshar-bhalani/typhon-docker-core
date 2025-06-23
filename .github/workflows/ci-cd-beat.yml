@@ -1,4 +1,4 @@
-name : CI/CD core
+name : CI/CD core beat
 
 on:
   push:
@@ -20,7 +20,7 @@ jobs:
           password: ${{secrets.DOCKER_PASSWORD}}
   
       - name: Build image
-        run: docker build -t ${{secrets.DOCKER_USERNAME}}/typhon-docker-backend:latest . 
+        run: docker build -f Dockerfile.beat -t ${{secrets.DOCKER_USERNAME}}/typhon-docker-backend:latest . 
 
       - name: Push images 
         run: docker push ${{secrets.DOCKER_USERNAME}}/typhon-docker-backend:latest
