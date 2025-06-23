@@ -20,10 +20,10 @@ jobs:
           password: ${{secrets.DOCKER_PASSWORD}}
   
       - name: Build image
-        run: docker build -f Dockerfile.beat -t ${{secrets.DOCKER_USERNAME}}/typhon-docker-backend:latest . 
+        run: docker build -f Dockerfile.beat -t ${{secrets.DOCKER_USERNAME}}/typhon-docker-beat:latest . 
 
       - name: Push images 
-        run: docker push ${{secrets.DOCKER_USERNAME}}/typhon-docker-backend:latest
+        run: docker push ${{secrets.DOCKER_USERNAME}}/typhon-docker-beat:latest
 
       - name: Trigger Local Deploy
         run: curl -X POST  ${{secrets.DEPLOY_WEBHOOK_URL}}
